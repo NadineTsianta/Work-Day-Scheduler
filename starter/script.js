@@ -40,30 +40,33 @@ function userSubmit(event) {
     });
 }
 
-saveBtnEl.on('click', userSubmit)
+$('.saveBtn').on('click', function (e) {
+    e.preventDefault();
+    userSubmit();
+});
 
 
 
 //to change the colour of the timeblocks
 
 function updateColours() {
-
     let currentHour = today.hour();
     
     timeBlockEl.each(function () {
         let currentBlock = $(this);
         let timeText = currentBlock.find('.time-block').text();
-        let blockTime = dayjs(timeText, 'hh a');
-        
+        let blockTime = dayjs(timeText, 'hh A');
+
+        currentBlock.removeClass('past present future');  // Remove all classes first
+
         if (blockTime.isBefore(dayjs(), 'hour')) {
-            currentBlock.addClass('past').removeClass('present future');
+            currentBlock.addClass('past');
         } else if (blockTime.isSame(dayjs(), 'hour')) {
-            currentBlock.addClass('present').removeClass('past future');
+            currentBlock.addClass('present');
         } else {
-            currentBlock.addClass('future').removeClass('past present');
+            currentBlock.addClass('future');
         }
     });
-    
 }
 
 updateColours();
