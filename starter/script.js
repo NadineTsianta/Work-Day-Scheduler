@@ -52,12 +52,12 @@ function updateColours() {
     
     timeBlockEl.each(function () {
         let currentBlock = $(this);
-        let timeText = currentBlock.closest('.row').find('.time-block').text();
+        let timeText = currentBlock.find('.time-block').text();
         let blockTime = dayjs(timeText, 'hh a');
         
-        if (blockTime.isBefore(today, 'hour')) {
+        if (blockTime.isBefore(dayjs(), 'hour')) {
             currentBlock.addClass('past').removeClass('present future');
-        } else if (blockTime.isSame(today, 'hour')) {
+        } else if (blockTime.isSame(dayjs(), 'hour')) {
             currentBlock.addClass('present').removeClass('past future');
         } else {
             currentBlock.addClass('future').removeClass('past present');
