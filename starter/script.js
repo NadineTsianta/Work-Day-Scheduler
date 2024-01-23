@@ -28,7 +28,10 @@ function userSubmit() {
         // Store the user input in local storage
         localStorage.setItem(key, toDo);
     });
-}
+};
+
+saveBtnEl.on('click', userSubmit)
+
 
 
 //to change the colour of the timeblocks
@@ -38,16 +41,16 @@ function updateColours() {
     let currentHour = today.hour();
     
     timeBlockEl.each(function () {
-        let timeBlock = $(this);
-        let timeText = timeBlock.find('.time-block').text();
-        let blockTime = dayjs(timeText, 'hh A');
+        let currentBlock = $(this);
+        let timeText = currentBlock.closest('.row').find('.time-block').text();
+        let blockTime = dayjs(timeText, 'hh a');
         
         if (blockTime.isBefore(today, 'hour')) {
-            timeBlock.addClass('past').removeClass('present future');
+            currentBlock.addClass('past').removeClass('present future');
         } else if (blockTime.isSame(today, 'hour')) {
-            timeBlock.addClass('present').removeClass('past future');
+            currentBlock.addClass('present').removeClass('past future');
         } else {
-            timeBlock.addClass('future').removeClass('past present');
+            currentBlock.addClass('future').removeClass('past present');
         }
     });
     
@@ -57,10 +60,10 @@ updateColours();
 
 
 
-setInterval(function (){
+setInterval(function () {
     let newHour = dayjs().hour();
     if (newHour !== today.hour()) {
-        today =dayjs();
+        today = dayjs();
         $('#currentDay').text(today.format("dddd D, MMMM"))
         updateColours()
     }
