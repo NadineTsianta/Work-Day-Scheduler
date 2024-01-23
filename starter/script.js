@@ -3,6 +3,7 @@ let today = dayjs();
 let userInputEl = $('.description');
 let saveBtnEl = $('.saveBtn');
 let timeBlockEl = $('.time-block')
+let hourEl = $('.hour');
 
 
 //To add the date on top of the screen
@@ -48,26 +49,23 @@ $('.saveBtn').on('click', function (e) {
 
 
 //to change the colour of the timeblocks
-
 function updateColours() {
-    let currentHour = today.hour();
-    
-    timeBlockEl.each(function () {
+    hourEl.each(function () {
         let currentBlock = $(this);
-        let timeText = currentBlock.find('.time-block').text();
+        let timeText = currentBlock.text();
         let blockTime = dayjs(timeText, 'hh A');
 
-        currentBlock.removeClass('past present future');  // Remove all classes first
+        currentBlock.removeClass('past present future');
 
-        if (blockTime.isBefore(dayjs(), 'hour')) {
+        if (blockTime.isBefore(today, 'hour')) {
             currentBlock.addClass('past');
-        } else if (blockTime.isSame(dayjs(), 'hour')) {
+        } else if (blockTime.isSame(today, 'hour', { round: 'hour' })) {
             currentBlock.addClass('present');
         } else {
             currentBlock.addClass('future');
         }
     });
-}
+};
 
 updateColours();
 
