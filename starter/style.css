@@ -70,3 +70,25 @@ header {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
+
+#feedback { 
+  font-size: 1.4em; }
+
+#selectable .ui-selecting { 
+  background: #FECA40; }
+
+#selectable .ui-selected { 
+  background: #F39814; 
+  color: rgb(206, 206, 206); }
+
+#selectable { 
+  list-style-type: none; 
+  margin: 0; 
+  padding: 0; 
+  width: 60%; }
+
+#selectable li { 
+  margin: 3px; 
+  padding: 1em; 
+  font-size: 2em; 
+  height: 16px; }
