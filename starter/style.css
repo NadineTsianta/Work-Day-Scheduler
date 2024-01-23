@@ -35,6 +35,8 @@ header {
   white-space: pre-wrap;
   height: 80px;
   border-top: 1px solid white;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .hour {
@@ -64,6 +66,7 @@ header {
   border-bottom-right-radius: 15px;
   background-color: #06aed5;
   color: white;
+  margin-left: 10px;
 }
 
 .saveBtn i:hover {
