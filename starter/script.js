@@ -52,8 +52,7 @@ $('.saveBtn').on('click', function (e) {
 function updateColours() {
     hourEl.each(function () {
         let currentBlock = $(this);
-        let timeText = currentBlock.text();
-        let blockTime = dayjs(timeText, 'hh A');
+        let blockTime = dayjs(currentBlock.text(), 'HH');
 
         currentBlock.removeClass('past present future');
 
@@ -65,8 +64,7 @@ function updateColours() {
             currentBlock.addClass('future');
         }
     });
-};
-
+}
 updateColours();
 
 
