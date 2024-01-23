@@ -30,8 +30,7 @@ loadStoredData();
 
 
 function userSubmit(event) {
-    event.preventDefault(); // Prevent the default form submission
-
+    // event.preventDefault(); // Prevent the default form submission
     userInputEl.each(function () {
         let userInput = $(this);
         let timeBlock = userInput.closest('.row').find('.time-block').text();//Find  the closest parent with the class .row, then finds the child with the class. To ensure that I get the correct time block associated with the user input.
